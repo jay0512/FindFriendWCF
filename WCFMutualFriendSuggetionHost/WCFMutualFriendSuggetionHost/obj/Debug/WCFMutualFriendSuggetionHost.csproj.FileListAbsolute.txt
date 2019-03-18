@@ -1,0 +1,11 @@
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\bin\Debug\WCFMutualFriendSuggetionHost.exe.config
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\bin\Debug\WCFMutualFriendSuggetionHost.exe
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\bin\Debug\WCFMutualFriendSuggetionHost.pdb
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\bin\Debug\WCFMutualFriendSuggetionService.dll
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\bin\Debug\WCFMutualFriendSuggetionService.pdb
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\obj\Debug\WCFMutualFriendSuggetionHost.csprojResolveAssemblyReference.cache
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\obj\Debug\WCFMutualFriendSuggetionHost.Form1.resources
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\obj\Debug\WCFMutualFriendSuggetionHost.Properties.Resources.resources
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\obj\Debug\WCFMutualFriendSuggetionHost.csproj.GenerateResource.Cache
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\obj\Debug\WCFMutualFriendSuggetionHost.exe
+c:\users\hinka\documents\visual studio 2015\Projects\WCFMutualFriendSuggetionHost\WCFMutualFriendSuggetionHost\obj\Debug\WCFMutualFriendSuggetionHost.pdb

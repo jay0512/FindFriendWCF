@@ -1,0 +1,5 @@
+C:\Users\Hinka\Documents\Visual Studio 2015\Projects\WCFMutualFriendSuggetionService\WCFMutualFriendSuggetionService\bin\Debug\WCFMutualFriendSuggetionService.dll.config
+C:\Users\Hinka\Documents\Visual Studio 2015\Projects\WCFMutualFriendSuggetionService\WCFMutualFriendSuggetionService\bin\Debug\WCFMutualFriendSuggetionService.dll
+C:\Users\Hinka\Documents\Visual Studio 2015\Projects\WCFMutualFriendSuggetionService\WCFMutualFriendSuggetionService\bin\Debug\WCFMutualFriendSuggetionService.pdb
+C:\Users\Hinka\Documents\Visual Studio 2015\Projects\WCFMutualFriendSuggetionService\WCFMutualFriendSuggetionService\obj\Debug\WCFMutualFriendSuggetionService.dll
+C:\Users\Hinka\Documents\Visual Studio 2015\Projects\WCFMutualFriendSuggetionService\WCFMutualFriendSuggetionService\obj\Debug\WCFMutualFriendSuggetionService.pdb
