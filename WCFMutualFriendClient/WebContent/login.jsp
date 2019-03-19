@@ -29,7 +29,7 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Login</h2>
-                        <form action = "Login" method="GET" class="register-form" id="login-form">
+                        <form action = "Login" method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="email" id="your_name" placeholder="Your Name"/>
