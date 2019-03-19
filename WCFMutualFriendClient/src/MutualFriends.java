@@ -11,22 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.datacontract.schemas._2004._07.WCFMutualFriendSuggetionService.User;
-import org.datacontract.schemas._2004._07.WCFMutualFriendSuggetionService.UserWithCount;
 import org.tempuri.IService1Proxy;
 
-import com.microsoft.schemas._2003._10.Serialization.Arrays.ArrayOfKeyValueOfUserintCL4X437TKeyValueOfUserintCL4X437T;
-
 /**
- * Servlet implementation class Home
+ * Servlet implementation class MutualFriends
  */
-@WebServlet("/Home")
-public class Home extends HttpServlet {
+@WebServlet("/MutualFriends")
+public class MutualFriends extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public MutualFriends() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -43,20 +41,18 @@ public class Home extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
 		}
+
 		String userEmail=session.getAttribute("username").toString();
-		String pattern =request.getParameter("serachPattern").toString();
+		int FriendID = Integer.parseInt(request.getParameter("id"));
 		
 		IService1Proxy proxy =new IService1Proxy();
 		User usr=proxy.getUserByEmail(userEmail);
-		UserWithCount[] usrcnt = proxy.getNonFriendsFromQueryString(usr.getUserID(), pattern);
-		UserWithCount[] frndcnt = proxy.getFriendsFromQueryString(usr.getUserID(), pattern);
 		
-		request.setAttribute("nonFriendList", usrcnt);
-		request.setAttribute("FriendList", frndcnt);
+		User[] mutualList = proxy.getMutualFriends(usr.getUserID(), FriendID);
+		request.setAttribute("MutualFriendsList", mutualList);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/searchFriend.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/mutualFriend.jsp");
         rd.forward(request, response);
-
 	}
 
 	/**

@@ -24,7 +24,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form action = "SignUp" method="GET" class="register-form" id="register-form">
+                        <form action = "SignUp" method="POST" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="firstName" id="name" placeholder="Your First Name"/>

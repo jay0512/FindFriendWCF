@@ -56,6 +56,12 @@ public class IService1Proxy implements org.tempuri.IService1 {
     return iService1.getUserByEmail(email);
   }
   
+  public java.lang.Integer addFriend(java.lang.Integer userID, java.lang.Integer friendID) throws java.rmi.RemoteException{
+    if (iService1 == null)
+      _initIService1Proxy();
+    return iService1.addFriend(userID, friendID);
+  }
+  
   public org.datacontract.schemas._2004._07.WCFMutualFriendSuggetionService.User getUserByFirstName(java.lang.String firstname) throws java.rmi.RemoteException{
     if (iService1 == null)
       _initIService1Proxy();
@@ -74,24 +80,6 @@ public class IService1Proxy implements org.tempuri.IService1 {
     return iService1.getUsers();
   }
   
-  public org.datacontract.schemas._2004._07.WCFMutualFriendSuggetionService.User[] getMutualFriends(java.lang.Integer userId, java.lang.Integer friendId) throws java.rmi.RemoteException{
-    if (iService1 == null)
-      _initIService1Proxy();
-    return iService1.getMutualFriends(userId, friendId);
-  }
-  
-  public java.lang.Integer getMutualFriendsCount(java.lang.Integer userId, java.lang.Integer friendId) throws java.rmi.RemoteException{
-    if (iService1 == null)
-      _initIService1Proxy();
-    return iService1.getMutualFriendsCount(userId, friendId);
-  }
-  
-  public java.lang.Integer addFriend(java.lang.Integer userID, java.lang.Integer friendID) throws java.rmi.RemoteException{
-    if (iService1 == null)
-      _initIService1Proxy();
-    return iService1.addFriend(userID, friendID);
-  }
-  
   public org.datacontract.schemas._2004._07.WCFMutualFriendSuggetionService.UserWithCount[] getNonFriendsFromQueryString(java.lang.Integer userID, java.lang.String pattern) throws java.rmi.RemoteException{
     if (iService1 == null)
       _initIService1Proxy();
@@ -102,6 +90,18 @@ public class IService1Proxy implements org.tempuri.IService1 {
     if (iService1 == null)
       _initIService1Proxy();
     return iService1.getFriendsFromQueryString(userID, pattern);
+  }
+  
+  public org.datacontract.schemas._2004._07.WCFMutualFriendSuggetionService.User[] getMutualFriends(java.lang.Integer userId, java.lang.Integer friendId) throws java.rmi.RemoteException{
+    if (iService1 == null)
+      _initIService1Proxy();
+    return iService1.getMutualFriends(userId, friendId);
+  }
+  
+  public java.lang.Integer getMutualFriendsCount(java.lang.Integer userId, java.lang.Integer friendId) throws java.rmi.RemoteException{
+    if (iService1 == null)
+      _initIService1Proxy();
+    return iService1.getMutualFriendsCount(userId, friendId);
   }
   
   

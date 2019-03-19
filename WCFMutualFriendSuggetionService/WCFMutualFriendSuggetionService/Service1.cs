@@ -165,7 +165,7 @@ namespace WCFMutualFriendSuggetionService
         public List<UserWithCount> GetNonFriendsFromQueryString(int UserID, string pattern)
         {
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Hinka\Documents\UserDB.mdf;Integrated Security=True;Connect Timeout=30");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE UserID NOT IN(SELECT FriendID from [Friend] where UserID=1)  AND UserID != @UserID and ( FirstName Like '"+pattern+ "%' or LastName Like '"+pattern+"%')", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE UserID NOT IN(SELECT FriendID from [Friend] where UserID=@UserID)  AND UserID != @UserID and ( FirstName Like '" + pattern+ "%' or LastName Like '"+pattern+"%')", con);
             cmd.Parameters.Add(new SqlParameter("@UserID", UserID));
             //cmd.Parameters.Add(new SqlParameter("@pattern", pattern));
             con.Open();
