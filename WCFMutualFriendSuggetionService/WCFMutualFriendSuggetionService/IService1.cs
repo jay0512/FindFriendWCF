@@ -22,10 +22,19 @@ namespace WCFMutualFriendSuggetionService
         int addFriend(int UserID, int FriendID);
 
         [OperationContract]
+        int removeFriend(int UserID, int FriendID);
+
+        [OperationContract]
         User getUserByFirstName(string firstname);
 
         [OperationContract]
+        User getUserByUserID(int UserID);
+
+        [OperationContract]
         string AddUser(string FirstName, string LastName, string Email, string Password);
+
+        [OperationContract]
+        string removeUser(int UserID);
 
         [OperationContract]
         List<User> GetUsers();

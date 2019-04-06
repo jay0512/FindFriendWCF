@@ -19,7 +19,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Mutual Friends</title>
+<title>Profile</title>
 
 <link rel="stylesheet" href="assets/demo.css">
 <link rel="stylesheet" href="assets/header-fixed.css">
@@ -278,19 +278,21 @@ body {
   </script>
 
 <div style="margin-top: 15%;">
-      <% if(null!=request.getAttribute("MutualFriendsList"))
+      <% if(null!=request.getAttribute("FriendProfile"))
 	    {
-			User[] users1 = (User[])request.getAttribute("MutualFriendsList"); 
-			for (int i = 0; i < users1.length; i++) { 
-		       String userName = users1[i].getFirstName();
-		       String lastName = users1[i].getLastName(); %>
+			User friend = (User)request.getAttribute("FriendProfile");
+		       String userName = friend.getFirstName();
+		       String lastName = friend.getLastName(); %>
     <div class="card" style="margin-top: 2%;margin-left: 20%;margin-right: 20%;">
         <div class="card-body">
-          <h5 class="card-title"><a href="Profile?id=<% out.print(users1[i].getUserID()); %>"><% out.print(userName); %> <% out.print(lastName); %></a></h5>
-          <button type="button" class="btn btn-light" disabled>Friend</button>
+          <h5 class="card-title"><% out.print(userName); %> <% out.print(lastName); %></h5>
+          <form action="RemoveFriend" method="POST">
+        	<input type="hidden" name="FriendID" value= "<% out.print(friend.getUserID()); %>"/>
+        	<button type="submit" class="btn btn-primary">Remove Friend</button>
+    	  </form>
         </div>
       </div>
-    <% }} %>
+    <% } %>
     
       
 </div>

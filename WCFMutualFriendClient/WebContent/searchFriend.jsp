@@ -230,8 +230,8 @@ body {
   		<h1><a href="#">Friends<span>Book</span></a></h1>
 
   		<nav>
-  			<a href="#" class="selected">Home</a>
-  			<a href="#">About</a>
+  			<a href="#" class="selected"><% out.print(session.getAttribute("username")); %></a>
+  			<a href="searchFriend.jsp">Home</a>
   			<a href="#">Contact</a>
   			<a href="Logout">Logout</a>
   		</nav>
@@ -301,7 +301,7 @@ body {
 		       int count = users1[i].getCount(); %>
     <div class="card" style="margin-top: 2%;margin-left: 20%;margin-right: 20%;">
         <div class="card-body">
-          <h5 class="card-title"><% out.print(userName); %> <% out.print(lastName); %></h5>
+          <h5 class="card-title"><a href="Profile?id=<% out.print(FriendID); %>"><% out.print(userName); %> <% out.print(lastName); %></a></h5>
         	<p class="card-text"><a href="MutualFriends?id=<% out.print(FriendID); %>"><% out.print(count); %> Mutual friends</a></p>
           <button type="button" class="btn btn-light" disabled>Friend</button>
         </div>
@@ -318,7 +318,7 @@ body {
 		       int count = users[i].getCount(); %>
   	<div class="card" style="margin-top: 2%;margin-left: 20%;margin-right: 20%;">
       	<div class="card-body">
-        	<h5 class="card-title"><% out.print(userName); %> <% out.print(lastName); %></h5>
+          <h5 class="card-title"><a href="Profile?id=<% out.print(FriendID); %>"><% out.print(userName); %> <% out.print(lastName); %></a></h5>
         	<p class="card-text"><a href="MutualFriends?id=<% out.print(FriendID); %>"><% out.print(count); %> Mutual friends</a></p>
         	<form action="AddFriend" method="POST">
         	<input type="hidden" name="FriendID" value= "<% out.print(FriendID); %>"/>

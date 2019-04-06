@@ -184,6 +184,7 @@ namespace WCFMutualFriendSuggetionService
                 usrcnt.Count = count;
                 NonFriendsList.Add(usrcnt);
             }
+            NonFriendsList.OrderByDescending(val1 => val1.Count);
             rd.Close();
             con.Close();
             return NonFriendsList;
@@ -211,9 +212,65 @@ namespace WCFMutualFriendSuggetionService
                 usrcnt.Count = count;
                 FriendList.Add(usrcnt);
             }
+            FriendList.OrderByDescending(val1 => val1.Count);
             rd.Close();
             con.Close();
             return FriendList;
+        }
+
+        public int removeFriend(int UserID, int FriendID)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Hinka\Documents\UserDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlCommand cmd = new SqlCommand("delete from [Friend] where UserID=@UserID and FriendID=@FriendID", con);
+            cmd.Parameters.Add(new SqlParameter("@UserID", UserID));
+            cmd.Parameters.Add(new SqlParameter("@FriendID", FriendID));
+            con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public string removeUser(int UserID)
+        {
+            string Message;
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Hinka\Documents\UserDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlCommand cmd = new SqlCommand("delete from [User] where UserID=@UserID ", con);
+            cmd.Parameters.Add(new SqlParameter("@UserID", UserID));
+            con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            if (result == 1)
+            {
+                Message = "successfully";
+            }
+            else
+            {
+                Message = "unsuccessfully";
+            }
+            con.Close();
+            return Message;
+        }
+
+        public User getUserByUserID(int UserID)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Hinka\Documents\UserDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlCommand cmd = new SqlCommand("Select * from [User] where UserID=@UserID", con);
+            cmd.Parameters.Add(new SqlParameter("@UserID", UserID));
+            con.Open();
+            SqlDataReader rd = cmd.ExecuteReader();
+            User usr = new User();
+            while (rd.Read())
+            {
+                usr.UserID = rd.GetInt32(0);
+                usr.FirstName = rd.GetString(1);
+                usr.LastName = rd.GetString(2);
+                usr.Email = rd.GetString(3);
+                usr.Password = rd.GetString(4);
+            }
+            rd.Close();
+            con.Close();
+            return usr;
         }
     }
 }
