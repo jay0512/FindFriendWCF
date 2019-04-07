@@ -1,0 +1,328 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SearchFriend.aspx.cs" Inherits="WCFMutualFriendSuggetionsDotNetClient.SearchFriend" %>
+<%@ Import Namespace="WCFMutualFriendSuggetionsDotNetClient.ServiceReference1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Search People</title>
+
+<link rel="stylesheet" href="assets/demo.css">
+<link rel="stylesheet" href="assets/header-fixed.css">
+<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+  body{
+    background: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .search {
+    width: 100%;
+    position: relative
+  }
+
+  .searchTerm {
+    float: left;
+    width: 100%;
+    border: 3px solid #608bd2;
+    padding: 15px;
+    height: 20px;
+    border-radius: 5px;
+    outline: none;
+    color: #608bd2;
+  }
+
+  .searchTerm:focus{
+    color: #00B4CC;
+  }
+
+  .searchButton {
+    position: absolute;
+    right: -89px;
+    width: 74px;
+    height: 36px;
+    border: 1px solid #608bd2;
+    background: #608bd2;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+        top: 1px;
+    }
+
+  /*Resize the wrap to see the search bar change!*/
+  .wrap{
+    width: 30%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    padding-top:10%;
+    transform: translate(-50%, -50%);
+  }
+
+  /*For  header*/
+  .header-fixed {
+	background-color:#292c2f;
+	box-shadow:0 1px 1px #ccc;
+	padding: 20px 40px;
+	height: 80px;
+	color: #ffffff;
+	box-sizing: border-box;
+	top:-100px;
+
+	-webkit-transition:top 0.3s;
+	transition:top 0.3s;
+}
+
+.header-fixed .header-limiter {
+	max-width: 1200px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/*	The header placeholder. It is displayed when the header is fixed to the top of the
+	browser window, in order to prevent the content of the page from jumping up. */
+
+.header-fixed-placeholder{
+	height: 80px;
+	display: none;
+}
+
+/* Logo */
+
+.header-fixed .header-limiter h1 {
+	float: left;
+	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	margin: 0;
+}
+
+.header-fixed .header-limiter h1 span {
+	color: #5383d3;
+}
+
+/* The navigation links */
+
+.header-fixed .header-limiter a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.header-fixed .header-limiter nav {
+	font:16px Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	float: right;
+}
+
+.header-fixed .header-limiter nav a{
+	display: inline-block;
+	padding: 0 5px;
+	text-decoration:none;
+	color: #ffffff;
+	opacity: 0.9;
+}
+
+.header-fixed .header-limiter nav a:hover{
+	opacity: 1;
+}
+
+.header-fixed .header-limiter nav a.selected {
+	color: #608bd2;
+	pointer-events: none;
+	opacity: 1;
+}
+
+/* Fixed version of the header */
+
+body.fixed .header-fixed {
+	padding: 10px 40px;
+	height: 50px;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+body.fixed .header-fixed-placeholder {
+	display: block;
+}
+
+body.fixed .header-fixed .header-limiter h1 {
+	font-size: 24px;
+	line-height: 30px;
+}
+
+body.fixed .header-fixed .header-limiter nav {
+	line-height: 28px;
+	font-size: 13px;
+}
+
+
+/* Making the header responsive */
+
+@media all and (max-width: 600px) {
+
+	.header-fixed {
+		padding: 20px 0;
+		height: 75px;
+	}
+
+	.header-fixed .header-limiter h1 {
+		float: none;
+		margin: -8px 0 10px;
+		text-align: center;
+		font-size: 24px;
+		line-height: 1;
+	}
+
+	.header-fixed .header-limiter nav {
+		line-height: 1;
+		float:none;
+	}
+
+	.header-fixed .header-limiter nav a {
+		font-size: 13px;
+	}
+
+	body.fixed .header-fixed {
+		display: none;
+	}
+
+}
+
+/*
+	 We are clearing the body's margin and padding, so that the header fits properly.
+	 We are also adding a height to demonstrate the scrolling behavior. You can remove
+	 these styles.
+ */
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 1500px;
+}
+</style>
+</head>
+<body>
+
+  <header class="header-fixed">
+
+  	<div class="header-limiter">
+
+  		<h1><a href="#">Friends<span>Book</span></a></h1>
+
+  		<nav>
+  			<a href="#" class="selected"><% Response.Write(Session["username"]); %></a>
+  			<a href="searchFriend.aspx">Home</a>
+  			<a href="#">Contact</a>
+  			<a href="Logout.aspx">Logout</a>
+  		</nav>
+
+  	</div>
+
+  </header>
+
+  <!-- You need this element to prevent the content of the page from jumping up -->
+  <div class="header-fixed-placeholder"></div>
+
+  <!-- The content of your page would go here. -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+
+  	$(document).ready(function(){
+
+  		var showHeaderAt = 150;
+
+  		var win = $(window),
+  				body = $('body');
+
+  		// Show the fixed header only on larger screen devices
+
+  		if(win.width() > 400){
+
+  			// When we scroll more than 150px down, we set the
+  			// "fixed" class on the body element.
+
+  			win.on('scroll', function(e){
+
+  				if(win.scrollTop() > showHeaderAt) {
+  					body.addClass('fixed');
+  				}
+  				else {
+  					body.removeClass('fixed');
+  				}
+  			});
+
+  		}
+
+  	});
+
+  </script>
+
+
+<div class="wrap">
+   <div class="search">
+	<form id="form1" runat="server">
+      <asp:TextBox ID="TextBox1" CssClass="searchTerm" runat="server"></asp:TextBox>
+      <asp:Button ID="Button1" runat="server" CssClass="searchButton" OnClick="Button1_Click" Text="Search" />
+     </form>
+   </div>
+
+</div>
+<div style="margin-top: 15%;">
+      <% if(null!= Session["FriendList"])
+          {
+              foreach (var x in (UserWithCount[])Session["FriendList"] )
+              {
+                 String userName = x.UserObj.FirstName;
+                     String lastName = x.UserObj.LastName;
+                     int FriendID = x.UserObj.UserID;
+                     int count = x.Count; %>
+    <div class="card" style="margin-top: 2%;margin-left: 20%;margin-right: 20%;">
+        <div class="card-body">
+          <h5 class="card-title"><a href="Profile.aspx?id=<% Response.Write(FriendID); %>"><% Response.Write(userName); %>&nbsp;<% Response.Write(lastName); %></a></h5>
+        	<p class="card-text"><a href="MutualFriend.aspx?id=<% Response.Write(FriendID); %>"><% Response.Write(count); %> Mutual friends</a></p>
+          <button type="button" class="btn btn-light" disabled>Friend</button>
+        </div>
+      </div>
+    <% }} %>
+    
+    <% if (null != Session["nonFriendList"])
+             {
+
+                 foreach (var x in (UserWithCount[])Session["nonFriendList"]) {
+                     String userName = x.UserObj.FirstName;
+                     String lastName = x.UserObj.LastName;
+                     int FriendID = x.UserObj.UserID;
+                     int count = x.Count; %>
+  	<div class="card" style="margin-top: 2%;margin-left: 20%;margin-right: 20%;">
+      	<div class="card-body">
+          <h5 class="card-title"><a href="Profile.aspx?id=<% Response.Write(FriendID); %>"><% Response.Write(userName); %>&nbsp;<% Response.Write(lastName); %></a></h5>
+        	<p class="card-text"><a href="MutualFriend.aspx?id=<% Response.Write(FriendID); %>"><% Response.Write(count); %> Mutual friends</a></p>
+        	<button type="submit" class="btn btn-primary"><a style="color:white" href="AddFriend.aspx?id=<% Response.Write(FriendID); %>" >Add Friend</a></button>
+    	</div>
+    </div>
+      <% } } %>
+      
+</div>
+</body>
+</html>

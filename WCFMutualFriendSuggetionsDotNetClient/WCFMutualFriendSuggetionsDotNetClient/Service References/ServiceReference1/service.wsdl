@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFMutualFriendSuggetionService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_CheckUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CheckUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserByEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByEmail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserByEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:addFriend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_removeFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:removeFriend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_removeFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:removeFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserByFirstName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByFirstName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserByFirstName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByFirstNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserByUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByUserID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserByUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_removeUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:removeUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_removeUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:removeUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetNonFriendsFromQueryString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonFriendsFromQueryString" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetNonFriendsFromQueryString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonFriendsFromQueryStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFriendsFromQueryString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendsFromQueryString" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFriendsFromQueryString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendsFromQueryStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMutualFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMutualFriends" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMutualFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMutualFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMutualFriendsCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMutualFriendsCount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMutualFriendsCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMutualFriendsCountResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="CheckUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CheckUser" message="tns:IService1_CheckUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CheckUserResponse" message="tns:IService1_CheckUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserByEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserByEmail" message="tns:IService1_getUserByEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserByEmailResponse" message="tns:IService1_getUserByEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addFriend" message="tns:IService1_addFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addFriendResponse" message="tns:IService1_addFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removeFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/removeFriend" message="tns:IService1_removeFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/removeFriendResponse" message="tns:IService1_removeFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserByFirstName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserByFirstName" message="tns:IService1_getUserByFirstName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserByFirstNameResponse" message="tns:IService1_getUserByFirstName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserByUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserByUserID" message="tns:IService1_getUserByUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserByUserIDResponse" message="tns:IService1_getUserByUserID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUser" message="tns:IService1_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddUserResponse" message="tns:IService1_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/removeUser" message="tns:IService1_removeUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/removeUserResponse" message="tns:IService1_removeUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsers" message="tns:IService1_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersResponse" message="tns:IService1_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNonFriendsFromQueryString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetNonFriendsFromQueryString" message="tns:IService1_GetNonFriendsFromQueryString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetNonFriendsFromQueryStringResponse" message="tns:IService1_GetNonFriendsFromQueryString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendsFromQueryString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFriendsFromQueryString" message="tns:IService1_GetFriendsFromQueryString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFriendsFromQueryStringResponse" message="tns:IService1_GetFriendsFromQueryString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMutualFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMutualFriends" message="tns:IService1_GetMutualFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMutualFriendsResponse" message="tns:IService1_GetMutualFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMutualFriendsCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMutualFriendsCount" message="tns:IService1_GetMutualFriendsCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMutualFriendsCountResponse" message="tns:IService1_GetMutualFriendsCount_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/CheckUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByEmail">
+      <soap:operation soapAction="http://tempuri.org/IService1/getUserByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFriend">
+      <soap:operation soapAction="http://tempuri.org/IService1/addFriend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeFriend">
+      <soap:operation soapAction="http://tempuri.org/IService1/removeFriend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByFirstName">
+      <soap:operation soapAction="http://tempuri.org/IService1/getUserByFirstName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByUserID">
+      <soap:operation soapAction="http://tempuri.org/IService1/getUserByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/removeUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonFriendsFromQueryString">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetNonFriendsFromQueryString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendsFromQueryString">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetFriendsFromQueryString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMutualFriends">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMutualFriends" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMutualFriendsCount">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMutualFriendsCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:8000/WCFMutualFriendSuggetionService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
