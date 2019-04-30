@@ -16,7 +16,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[13];
+        _operations = new org.apache.axis.description.OperationDesc[14];
         _initOperationDesc1();
         _initOperationDesc2();
     }
@@ -135,6 +135,21 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
         _operations[6] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("isFriend");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "UserID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "FriendID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        oper.setReturnClass(java.lang.Boolean.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://tempuri.org/", "isFriendResult"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[7] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
         oper.setName("removeUser");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "UserID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
         param.setOmittable(true);
@@ -144,7 +159,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
         oper.setReturnQName(new javax.xml.namespace.QName("http://tempuri.org/", "removeUserResult"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[7] = oper;
+        _operations[8] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("GetUsers");
@@ -155,8 +170,13 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
         param.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/WCFMutualFriendSuggetionService", "User"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[8] = oper;
+        _operations[9] = oper;
 
+    }
+
+    private static void _initOperationDesc2(){
+        org.apache.axis.description.OperationDesc oper;
+        org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("GetNonFriendsFromQueryString");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "UserID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
@@ -173,13 +193,8 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
         param.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/WCFMutualFriendSuggetionService", "UserWithCount"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[9] = oper;
+        _operations[10] = oper;
 
-    }
-
-    private static void _initOperationDesc2(){
-        org.apache.axis.description.OperationDesc oper;
-        org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("GetFriendsFromQueryString");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "UserID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
@@ -196,7 +211,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
         param.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/WCFMutualFriendSuggetionService", "UserWithCount"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[10] = oper;
+        _operations[11] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("GetMutualFriends");
@@ -213,7 +228,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
         param.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/WCFMutualFriendSuggetionService", "User"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[11] = oper;
+        _operations[12] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("GetMutualFriendsCount");
@@ -228,7 +243,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
         oper.setReturnQName(new javax.xml.namespace.QName("http://tempuri.org/", "GetMutualFriendsCountResult"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[12] = oper;
+        _operations[13] = oper;
 
     }
 
@@ -597,12 +612,46 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
 }
     }
 
-    public java.lang.String removeUser(java.lang.Integer userID) throws java.rmi.RemoteException {
+    public java.lang.Boolean isFriend(java.lang.Integer userID, java.lang.Integer friendID) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[7]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("http://tempuri.org/IService1/isFriend");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://tempuri.org/", "isFriend"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userID, friendID});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (java.lang.Boolean) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.Boolean.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public java.lang.String removeUser(java.lang.Integer userID) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[8]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("http://tempuri.org/IService1/removeUser");
         _call.setEncodingStyle(null);
@@ -636,7 +685,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[8]);
+        _call.setOperation(_operations[9]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("http://tempuri.org/IService1/GetUsers");
         _call.setEncodingStyle(null);
@@ -670,7 +719,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[9]);
+        _call.setOperation(_operations[10]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("http://tempuri.org/IService1/GetNonFriendsFromQueryString");
         _call.setEncodingStyle(null);
@@ -704,7 +753,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[10]);
+        _call.setOperation(_operations[11]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("http://tempuri.org/IService1/GetFriendsFromQueryString");
         _call.setEncodingStyle(null);
@@ -738,7 +787,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[11]);
+        _call.setOperation(_operations[12]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("http://tempuri.org/IService1/GetMutualFriends");
         _call.setEncodingStyle(null);
@@ -772,7 +821,7 @@ public class BasicHttpBinding_IService1Stub extends org.apache.axis.client.Stub 
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[12]);
+        _call.setOperation(_operations[13]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("http://tempuri.org/IService1/GetMutualFriendsCount");
         _call.setEncodingStyle(null);

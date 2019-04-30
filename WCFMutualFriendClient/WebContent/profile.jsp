@@ -286,10 +286,17 @@ body {
     <div class="card" style="margin-top: 2%;margin-left: 20%;margin-right: 20%;">
         <div class="card-body">
           <h5 class="card-title"><% out.print(userName); %> <% out.print(lastName); %></h5>
-          <form action="RemoveFriend" method="POST">
+        	<% if(null!=request.getAttribute("isFriend")){ %>
+        	<form action="RemoveFriend" method="POST">
         	<input type="hidden" name="FriendID" value= "<% out.print(friend.getUserID()); %>"/>
         	<button type="submit" class="btn btn-primary">Remove Friend</button>
-    	  </form>
+        	</form>
+        	<% }else{ %>
+        	<form action="AddFriend" method="POST">
+        	<input type="hidden" name="FriendID" value= "<% out.print(friend.getUserID()); %>"/>
+        	<button type="submit" class="btn btn-primary">Add Friend</button>
+    		</form>        	
+        	<%}%>
         </div>
       </div>
     <% } %>

@@ -74,10 +74,22 @@ public class IService1Proxy implements org.tempuri.IService1 {
     return iService1.getUserByFirstName(firstname);
   }
   
+  public org.datacontract.schemas._2004._07.WCFMutualFriendSuggetionService.User getUserByUserID(java.lang.Integer userID) throws java.rmi.RemoteException{
+    if (iService1 == null)
+      _initIService1Proxy();
+    return iService1.getUserByUserID(userID);
+  }
+  
   public java.lang.String addUser(java.lang.String firstName, java.lang.String lastName, java.lang.String email, java.lang.String password) throws java.rmi.RemoteException{
     if (iService1 == null)
       _initIService1Proxy();
     return iService1.addUser(firstName, lastName, email, password);
+  }
+  
+  public java.lang.Boolean isFriend(java.lang.Integer userID, java.lang.Integer friendID) throws java.rmi.RemoteException{
+    if (iService1 == null)
+      _initIService1Proxy();
+    return iService1.isFriend(userID, friendID);
   }
   
   public java.lang.String removeUser(java.lang.Integer userID) throws java.rmi.RemoteException{
@@ -114,12 +126,6 @@ public class IService1Proxy implements org.tempuri.IService1 {
     if (iService1 == null)
       _initIService1Proxy();
     return iService1.getMutualFriendsCount(userId, friendId);
-  }
-  
-  public org.datacontract.schemas._2004._07.WCFMutualFriendSuggetionService.User getUserByUserID(java.lang.Integer userID) throws java.rmi.RemoteException{
-    if (iService1 == null)
-      _initIService1Proxy();
-    return iService1.getUserByUserID(userID);
   }
   
   

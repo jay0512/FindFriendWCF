@@ -164,8 +164,18 @@ namespace WCFMutualFriendSuggetionService
 
         public List<UserWithCount> GetNonFriendsFromQueryString(int UserID, string pattern)
         {
+            string[] patternList = pattern.Split(' ');
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Hinka\Documents\UserDB.mdf;Integrated Security=True;Connect Timeout=30");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE UserID NOT IN(SELECT FriendID from [Friend] where UserID=@UserID)  AND UserID != @UserID and ( FirstName Like '" + pattern+ "%' or LastName Like '"+pattern+"%')", con);
+            SqlCommand cmd = null;
+            if (patternList.Length!=1)
+            {
+                 cmd = new SqlCommand("SELECT * FROM [User] WHERE UserID NOT IN(SELECT FriendID from [Friend] where UserID=@UserID)  AND UserID != @UserID and (( FirstName Like '%" + patternList[0] + "%' and LastName Like '%" + patternList[1] + "%') or ( FirstName Like '%" + patternList[1] + "%' and LastName Like '%" + patternList[0] + "%') )", con);
+            }
+            else
+            {
+                cmd = new SqlCommand("SELECT * FROM [User] WHERE UserID NOT IN(SELECT FriendID from [Friend] where UserID=@UserID)  AND UserID != @UserID and ( FirstName Like '%" + pattern + "%' or LastName Like '%" + pattern + "%')", con);
+            }
+            
             cmd.Parameters.Add(new SqlParameter("@UserID", UserID));
             //cmd.Parameters.Add(new SqlParameter("@pattern", pattern));
             con.Open();
@@ -184,16 +194,26 @@ namespace WCFMutualFriendSuggetionService
                 usrcnt.Count = count;
                 NonFriendsList.Add(usrcnt);
             }
-            NonFriendsList.OrderByDescending(val1 => val1.Count);
+            //NonFriendsList.OrderByDescending(val1 => val1.Count);
             rd.Close();
             con.Close();
-            return NonFriendsList;
+            return NonFriendsList.OrderByDescending(val1 => val1.Count).ToList<UserWithCount>();
         }
 
         public List<UserWithCount> GetFriendsFromQueryString(int UserID, string pattern)
         {
+            string[] patternList = pattern.Split(' ');
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Hinka\Documents\UserDB.mdf;Integrated Security=True;Connect Timeout=30");
-            SqlCommand cmd = new SqlCommand("SELECT P1.UserID,P1.FirstName,P1.LastName,P1.Email FROM Friend AS F1 JOIN[User] AS P1 ON P1.UserID = F1.FriendID WHERE F1.UserID = @UserID AND ( P1.FirstName Like '" + pattern + "%' or P1.LastName Like '" + pattern + "%')", con);
+            SqlCommand cmd = null;
+            if (patternList.Length != 1)
+            {
+                cmd = new SqlCommand("SELECT P1.UserID,P1.FirstName,P1.LastName,P1.Email FROM Friend AS F1 JOIN[User] AS P1 ON P1.UserID = F1.FriendID WHERE F1.UserID = @UserID AND (( P1.FirstName Like '%" + patternList[0] + "%' and P1.LastName Like '%" + patternList[1] + "%') or  ( P1.FirstName Like '%" + patternList[1] + "%' and P1.LastName Like '%" + patternList[0] + "%'))", con);
+            }
+            else
+            {
+                cmd = new SqlCommand("SELECT P1.UserID,P1.FirstName,P1.LastName,P1.Email FROM Friend AS F1 JOIN[User] AS P1 ON P1.UserID = F1.FriendID WHERE F1.UserID = @UserID AND ( P1.FirstName Like '%" + pattern + "%' or P1.LastName Like '%" + pattern + "%')", con);
+            }
+            
             cmd.Parameters.Add(new SqlParameter("@UserID", UserID));
             //cmd.Parameters.Add(new SqlParameter("@pattern", pattern));
             con.Open();
@@ -212,10 +232,10 @@ namespace WCFMutualFriendSuggetionService
                 usrcnt.Count = count;
                 FriendList.Add(usrcnt);
             }
-            FriendList.OrderByDescending(val1 => val1.Count);
+            //FriendList.OrderByDescending(val1 => val1.Count);
             rd.Close();
             con.Close();
-            return FriendList;
+            return FriendList.OrderByDescending(val1 => val1.Count).ToList<UserWithCount>();
         }
 
         public int removeFriend(int UserID, int FriendID)
@@ -271,6 +291,28 @@ namespace WCFMutualFriendSuggetionService
             rd.Close();
             con.Close();
             return usr;
+        }
+
+        public bool isFriend(int UserID,int FriendID)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Hinka\Documents\UserDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlCommand cmd = new SqlCommand("Select * from [Friend] where UserID=@UserID and FriendID=@FriendID", con);
+            cmd.Parameters.Add(new SqlParameter("@UserID", UserID));
+            cmd.Parameters.Add(new SqlParameter("@FriendID", FriendID));
+            con.Open();
+            SqlDataReader result = cmd.ExecuteReader();
+            if (result.Read())
+            {
+                result.Close();
+                con.Close();
+                return true;
+            }
+            else
+            {
+                result.Close();
+                con.Close();
+                return false;
+            }
         }
     }
 }

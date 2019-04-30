@@ -34,6 +34,9 @@ namespace WCFMutualFriendSuggetionService
         string AddUser(string FirstName, string LastName, string Email, string Password);
 
         [OperationContract]
+        bool isFriend(int UserID, int FriendID);
+
+        [OperationContract]
         string removeUser(int UserID);
 
         [OperationContract]

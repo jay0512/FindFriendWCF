@@ -40,12 +40,19 @@ public class Profile extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
 		}
-		
+
+		String userEmail=session.getAttribute("username").toString();
+
 		int FriendID = Integer.parseInt(request.getParameter("id"));
 		IService1Proxy proxy =new IService1Proxy();
+		User usr=proxy.getUserByEmail(userEmail);
 		User friend = proxy.getUserByUserID(FriendID);
+		boolean isFriend = proxy.isFriend(usr.getUserID(),FriendID);
 		request.setAttribute("FriendProfile", friend);
-		
+		if(isFriend)
+			request.setAttribute("isFriend", isFriend);
+		else
+			request.setAttribute("isFriend", null);
 		RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
         rd.forward(request, response);
 		
